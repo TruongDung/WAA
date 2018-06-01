@@ -52,7 +52,7 @@ public class BookController {
 		return "redirect:/books";
 	}
 	
-	@RequestMapping(value="/books/add", method=RequestMethod.GET)
+	@RequestMapping(value="/books/add")
 	public String add() {
 		return "addBook";
 	}

@@ -1,4 +1,4 @@
-package com.example.demo;
+package edu.mum.waa.lab04.prob2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
