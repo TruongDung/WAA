@@ -4,6 +4,7 @@ package edu.mum.waa.lab04.prob2.controllers;
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +20,7 @@ import edu.mum.waa.lab04.prob2.entities.Book;
 @Controller
 public class BookController {
 
-	@Resource
+	@Autowired
 	private BookDao bookDao;
 	
 	@RequestMapping("/")

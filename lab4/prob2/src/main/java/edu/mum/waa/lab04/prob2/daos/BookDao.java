@@ -5,8 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import edu.mum.waa.lab04.prob2.entities.Book;
 
+@Repository
 public class BookDao implements IBookDao {
 	private static int idCount = 1;
 	private Map<Integer, Book> books = new HashMap<Integer, Book>();
