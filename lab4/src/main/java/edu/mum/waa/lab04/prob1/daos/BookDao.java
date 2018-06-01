@@ -12,8 +12,8 @@ public class BookDao implements IBookDao {
 	private Map<Integer, Book> books = new HashMap<Integer, Book>();
 
 	public BookDao() {
-		add(new Book("JSP", "ISBN","Spring Book", 20.5));
-		add(new Book("Spring MVC", "ISBN","MVC Book", 30.5));
+		add(new Book("JSP", "ISBN","Spring Book", 20.5, null));
+		add(new Book("Spring MVC", "ISBN","MVC Book", 30.5, null));
 	}
 
 	//@Override

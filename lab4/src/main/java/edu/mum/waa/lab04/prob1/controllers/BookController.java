@@ -1,9 +1,11 @@
 package edu.mum.waa.lab04.prob1.controllers;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,9 +55,13 @@ public class BookController {
 		return "addBook";
 	}
 	
-	@RequestMapping(value="/books", method=RequestMethod.POST)
-	public String add(Book book) {
-		bookDao.add(book);
-		return "redirect:/books";
+	@RequestMapping(value="/books/add", method=RequestMethod.POST)
+	public String add(@Valid Book book, BindingResult result) {
+		if(!result.hasErrors()) {
+			bookDao.add(book);
+			return "redirect:/books";
+		} else {
+			return "addBook";
+		}
 	}
 }

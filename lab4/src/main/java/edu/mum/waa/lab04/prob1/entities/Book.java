@@ -1,22 +1,47 @@
 package edu.mum.waa.lab04.prob1.entities;
 
+import java.util.Date;
+
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+
 public class Book {
 	private int id;
 	private String title;
+	
+	@Pattern(regexp="\\d{3}-\\d{10}")
 	private String ISBN;
 	private String author;
 	private double price;
+	
+	@Past
+	private Date publishedDate;
+
+	/**
+	 * @return the publishedDate
+	 */
+	public Date getPublishedDate() {
+		return publishedDate;
+	}
+
+	/**
+	 * @param publishedDate the publishedDate to set
+	 */
+	public void setPublishedDate(Date publishedDate) {
+		this.publishedDate = publishedDate;
+	}
 
 	public Book() {
 		super();
 	}
 
-	public Book(String title, String iSBN, String author, double price) {
+	public Book(String title, String iSBN, String author, double price, Date publishedDate) {
 		super();
 		this.title = title;
 		ISBN = iSBN;
 		this.author = author;
 		this.price = price;
+		this.publishedDate = publishedDate;
 	}
 
 	public int getId() {
