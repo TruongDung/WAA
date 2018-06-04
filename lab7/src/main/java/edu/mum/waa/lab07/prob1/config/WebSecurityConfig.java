@@ -1,4 +1,4 @@
-package edu.mum.waa.lab05.prob1.config;
+package edu.mum.waa.lab07.prob1.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -19,17 +19,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.withUser("accountant").password("accountant").roles("ACCOUNTANT");
 	}*/
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/welcome", "/login").permitAll().and().formLogin().loginPage("/login")
-				.usernameParameter("username").passwordParameter("password")
-				.defaultSuccessUrl("/welcome").permitAll();
-	}
+	 @Override
+	    public void configure(HttpSecurity http) throws Exception {
+	        http.authorizeRequests().antMatchers("css/**", "/index").permitAll()
+	                .antMatchers("/welcome").hasRole("USER")
+	                .and()
+	                .formLogin().loginPage("/login.jsp").failureUrl("/login-error").permitAll();
+	    }
 	
-	/*@Autowired
+	@Autowired
 	protected void configure1(AuthenticationManagerBuilder auth)  throws Exception {
 		auth.inMemoryAuthentication()
-		.withUser("guest").password("123").roles("USER");
+		.withUser("guest").password("{noop}123").roles("USER");
 	}
-*/
+
 }
