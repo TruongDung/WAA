@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <title>CoffeShop</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.0.0-1/css/bootstrap.min.css"/>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Home
+                        <!--<span class="sr-only">(current)</span>-->
+                    </a>
+                </li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <nav>
+        <ol layout:fragment="head_content">
+        <li>Welcome to my page</li>
+        </ol>
+    </nav>
+   
+    <!-- Page Features -->
+    <th:block layout:fragment="page_content">
+    </th:block>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+
+<script type="text/javascript" src="/webjars/jquery/3.3.1/jquery.js"></script>
+<script type="text/javascript" src="/webjars/bootstrap/4.0.0-1/js/bootstrap.js"></script>
+<th:block layout:fragment="scripts">
+</th:block>
+</body>
+</html>
