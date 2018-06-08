@@ -1,8 +1,12 @@
 package edu.mum.coffee.domain;
 
 import javax.persistence.*;
+
+import org.springframework.security.core.GrantedAuthority;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -21,6 +25,27 @@ public class User implements Serializable {
 
 	@Column(name = "ENABLED")
 	private boolean enabled;
+	
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinTable(name="user_role",
+			joinColumns = {@JoinColumn(name="user_id", referencedColumnName="id")},
+			inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName="id")}
+	)
+	private List<Role> roles = new ArrayList<>();
+
+	/**
+	 * @return the roles
+	 */
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	/**
+	 * @param roles the roles to set
+	 */
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
 
 	public long getId() {
 		return id;
@@ -53,4 +78,6 @@ public class User implements Serializable {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+
+	
 }
