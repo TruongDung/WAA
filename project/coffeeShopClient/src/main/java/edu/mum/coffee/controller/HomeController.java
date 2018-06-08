@@ -9,12 +9,14 @@ import edu.mum.coffee.service.ProductService;
 
 @Controller
 public class HomeController {
+	
 	@Autowired
 	private ProductService productService;
-
+	
 	@GetMapping({"/"})
 	public String homePage(Model model) {
-		model.addAttribute("products", productService.findAll());
+		System.out.println(productService.getAllProduct());
+		model.addAttribute("products", productService.getAllProduct());
 		return "index";
 	}
 }

@@ -21,7 +21,4 @@ public class ProductRestController {
 		List<Product> list = _productService.getAllProduct();
 		return list;
 	}
-	
-	
-	
 }
