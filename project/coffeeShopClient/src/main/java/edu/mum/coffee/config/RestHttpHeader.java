@@ -14,12 +14,9 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-
-
 @Component
 public class RestHttpHeader {
 	protected RestTemplate restTemplate;
-	
 	
 	public RestHttpHeader() {
 		restTemplate = new RestTemplate();

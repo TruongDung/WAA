@@ -11,8 +11,6 @@ import edu.mum.coffee.service.ProductService;
 @RequestMapping(path="/product")
 @Controller
 public class ProductController {
-	@Autowired
-	private ProductService productService;
 	
 	@GetMapping({"/list"})
 	public String list(Model model) {
