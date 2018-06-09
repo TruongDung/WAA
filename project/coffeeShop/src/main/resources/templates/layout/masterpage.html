@@ -19,13 +19,13 @@
 				<li class="nav-item" sec:authorize="isAuthenticated()">
 	               <div class="nav-link"> Hello <label th:text ="${#authentication.getPrincipal().getUser().getEmail()}"></label> </div>
 	             </li>
-	             <li class="nav-item" sec:authorize="isAuthenticated()">
+	             <li class="nav-item" sec:authorize="hasRole('CUSTOMER')">
 	             	<a class="nav-link" th:href="@{/person/me}">My Information</a>
 	             </li>
 	             <li class="nav-item" sec:authorize="hasRole('ADMIN')">
 	             	<a class="nav-link" th:href="@{/product/list}">Products</a>
 	             </li>
-	             <li class="nav-item" sec:authorize="isAuthenticated()">
+	             <li class="nav-item" sec:authorize="hasRole('ADMIN')">
 	             	<a class="nav-link" th:href="@{/person/list}">Person</a>
 	             </li>
 	             <li class="nav-item">
