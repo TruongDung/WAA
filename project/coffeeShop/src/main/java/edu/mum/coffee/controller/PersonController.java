@@ -9,18 +9,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.mum.coffee.custom.UserDetailsCustom;
 import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.service.PersonService;
 
 @Controller
+@RequestMapping(path="person")
 public class PersonController {
 	
 	@Autowired
 	PersonService personService;
 	
-	@GetMapping("/persons")
+	@GetMapping("/list")
 	public String personList(Model model, Authentication authentication) {
 		model.addAttribute("persons", personService.findAll());
 		return "personList";
@@ -32,7 +34,7 @@ public class PersonController {
 		return "redirect:/persons";
 	}
 	
-	@GetMapping("/myInformation")
+	@GetMapping("/me")
 	public String myInformation(Model model, Authentication authentication) {
 		UserDetailsCustom u = (UserDetailsCustom) authentication.getPrincipal();
 		System.out.println(u.getId());

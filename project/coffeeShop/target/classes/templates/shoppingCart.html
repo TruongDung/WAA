@@ -33,7 +33,7 @@
             <td data-th="Quantity">
                 <input type="number" class="form-control text-center quantity" th:value="${orderLine.quantity}">
             </td>
-            <td data-th="Subtotal" class="text-center" th:text="${orderLine.subTotal}"></td>
+            <td data-th="Subtotal" class="text-center" th:text="${orderLine.subtotal}"></td>
             <td class="actions" data-th="">
                 <button th:attr="productId=${orderLine.product.id}" class="btn btn-info btn-sm btn-refresh-shopping-cart"><i class="fa fa-save"></i></button>
                 <button th:attr="productId=${orderLine.product.id}" class="btn btn-danger btn-sm btn-remove-shopping-cart"><i class="fa fa-trash"></i></button>
