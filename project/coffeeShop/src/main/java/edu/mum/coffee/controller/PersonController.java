@@ -43,6 +43,7 @@ public class PersonController {
 	
 	@PostMapping("/myInformation")
 	public String myInformationPost(@Valid @ModelAttribute("Person") Person person) {
+		System.out.println(person.toString());
 		personService.savePerson(person);
 		return "redirect:/myInformation";
 	}
