@@ -1,5 +1,7 @@
 package edu.mum.coffee.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -37,5 +39,11 @@ public class PersonController {
 		System.out.println(u.getId());
 		model.addAttribute("person", this.personService.findById(u.getId()));
 		return "myInformation";
+	}
+	
+	@PostMapping("/myInformation")
+	public String myInformationPost(@Valid @ModelAttribute("Person") Person person) {
+		personService.savePerson(person);
+		return "redirect:/myInformation";
 	}
 }
