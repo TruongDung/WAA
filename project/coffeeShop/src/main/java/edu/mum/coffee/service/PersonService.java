@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.coffee.domain.Person;
+import edu.mum.coffee.domain.User;
 import edu.mum.coffee.repository.PersonRepository;
+import edu.mum.coffee.repository.UserRepository;
 
 @Service
 @Transactional
@@ -15,8 +17,13 @@ public class PersonService {
 
 	@Autowired
 	private PersonRepository personRepository;
+	@Autowired
+	private UserRepository userRepository;
 
 	public Person savePerson(Person person) {
+		User user = userRepository.findByEmail(person.getEmail());
+		user.setEnabled(person.isEnable());
+		userRepository.save(user);
 		return personRepository.save(person);
 	}
 

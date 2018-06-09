@@ -1,14 +1,16 @@
 package edu.mum.coffee.custom;
 
-import edu.mum.coffee.domain.Person;
-import edu.mum.coffee.domain.Role;
-import edu.mum.coffee.domain.User;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import edu.mum.coffee.domain.Person;
+import edu.mum.coffee.domain.Role;
+import edu.mum.coffee.domain.User;
 
 public class UserDetailsCustom implements UserDetails {
 	private static final long serialVersionUID = -1360188483928178893L;
@@ -26,10 +28,15 @@ public class UserDetailsCustom implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		//Set<GrantedAuthority> authorities = new HashSet<>();
+		Set<GrantedAuthority> authorities = new HashSet<>();
 		//user.getRoles().stream().forEach(authorities::add);
 		//return authorities;
-		return null;
+		//authorities.addAll((Collection<? extends GrantedAuthority>)user.getRoles());
+		for(Role role: this.user.getRoles()) {
+			authorities.add(new SimpleGrantedAuthority(role.getRole()));
+		}
+		
+		return authorities;
 	}
 
 	@Override

@@ -21,7 +21,7 @@ public class PersonController {
 	PersonService personService;
 	
 	@GetMapping("/persons")
-	public String personList(Model model) {
+	public String personList(Model model, Authentication authentication) {
 		model.addAttribute("persons", personService.findAll());
 		return "personList";
 	}
@@ -35,7 +35,6 @@ public class PersonController {
 	@GetMapping("/myInformation")
 	public String myInformation(Model model, Authentication authentication) {
 		UserDetailsCustom u = (UserDetailsCustom) authentication.getPrincipal();
-		//authentication.getPrincipal().getUser();
 		System.out.println(u.getId());
 		model.addAttribute("person", this.personService.findById(u.getId()));
 		return "myInformation";

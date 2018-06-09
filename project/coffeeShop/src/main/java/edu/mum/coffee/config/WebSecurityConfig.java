@@ -63,34 +63,34 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.setPasswordEncoder(passwordEncoder());
 		return auth;
 	}
-//
-//	@Bean
-//	public LayoutDialect layoutDialect() {
-//		return new LayoutDialect();
-//	}
 
-//	@Bean
-//	public SpringSecurityDialect securityDialect() {
-//		return new SpringSecurityDialect();
-//	}
+	@Bean
+	public LayoutDialect layoutDialect() {
+		return new LayoutDialect();
+	}
 
-//	@Autowired
-//	public SpringTemplateEngine templateEngine() {
-//		SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
-//		springTemplateEngine.addDialect(securityDialect());
-//		return springTemplateEngine;
-//	}
+	@Bean
+	public SpringSecurityDialect securityDialect() {
+		return new SpringSecurityDialect();
+	}
 
-//	@Override
-//	@Bean
-//	public AuthenticationManager authenticationManagerBean() throws Exception {
-//		return super.authenticationManagerBean();
-//	}
+	@Autowired
+	public SpringTemplateEngine templateEngine() {
+		SpringTemplateEngine springTemplateEngine = new SpringTemplateEngine();
+		springTemplateEngine.addDialect(securityDialect());
+		return springTemplateEngine;
+	}
 
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.authenticationProvider(authenticationProvider());
-//	}
+	@Override
+	@Bean
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
+
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.authenticationProvider(authenticationProvider());
+	}
 	
 	// https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
 }

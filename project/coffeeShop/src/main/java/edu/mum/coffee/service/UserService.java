@@ -28,7 +28,7 @@ public class UserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = userRepository.findByEmail(email);
 		if (user == null) {
-			throw new UsernameNotFoundException(String.format("User with %s doesn't exist!", email));
+			throw new UsernameNotFoundException(String.format("User With %s doesn't exist!", email));
 		}
 		List<Person> persons = personService.findByEmail(user.getEmail());
 		return new UserDetailsCustom(user, persons.get(0));
