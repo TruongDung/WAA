@@ -25,7 +25,7 @@ public class ProductService   {
 		productRepository.delete(product);
 	}
 
-	public Product getProduct(int productId) {
+	public Product getProduct(long productId) {
 		return  productRepository.findOne(productId);
 	}
 
@@ -46,6 +46,10 @@ public class ProductService   {
 	
 	public List<Product> findByProductType(ProductType productType) {
 		 return productRepository.findByProductType(productType);
+	}
+	
+	public Product findById(long id) {
+		return productRepository.findOne(id);
 	}
 	
 }
