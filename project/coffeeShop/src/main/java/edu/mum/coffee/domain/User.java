@@ -37,7 +37,8 @@ public class User implements Serializable {
 	 * @return the roles
 	 */
 	public List<Role> getRoles() {
-		return roles;
+		// TODO Auto-generated method stub
+		return this.roles;
 	}
 
 	/**
@@ -78,6 +79,8 @@ public class User implements Serializable {
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
+
+	
 
 	
 }

@@ -1,6 +1,7 @@
-package edu.mum.coffee.adapters;
+package edu.mum.coffee.custom;
 
 import edu.mum.coffee.domain.Person;
+import edu.mum.coffee.domain.Role;
 import edu.mum.coffee.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,25 +10,26 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UserAdapter implements UserDetails {
+public class UserDetailsCustom implements UserDetails {
 	private static final long serialVersionUID = -1360188483928178893L;
 	private User user;
 	private Person person;
 
-	public UserAdapter(User user) {
+	public UserDetailsCustom(User user) {
 		this.user = user;
 	}
 
-	public UserAdapter(User user, Person person) {
+	public UserDetailsCustom(User user, Person person) {
 		this.user = user;
 		this.person = person;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		Set<GrantedAuthority> authorities = new HashSet<>();
-		user.getRoles().stream().forEach(authorities::add);
-		return authorities;
+		//Set<GrantedAuthority> authorities = new HashSet<>();
+		//user.getRoles().stream().forEach(authorities::add);
+		//return authorities;
+		return null;
 	}
 
 	@Override
@@ -66,5 +68,9 @@ public class UserAdapter implements UserDetails {
 
 	public Person getPerson() {
 		return person;
+	}
+	
+	public Long getId() {
+		return this.user.getId();
 	}
 }

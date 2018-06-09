@@ -10,5 +10,5 @@ INSERT INTO ROLE(ID, ROLE) VALUES(2, 'ROLE_CUSTOMER');
 INSERT INTO USER(ID, EMAIL, PASSWORD, ENABLED) VALUES(1, 'admin', '$2a$04$pQeYdWnoGFRuxc2GZWMiVuA.lQ345CrC8FDc2cTY4FuRnI4C8rGf.', 1);
 INSERT INTO USER_ROLE(ID, USER_ID, ROLE_ID) VALUES(1, 1, 1);
 
-INSERT INTO PRODUCT(ID, product_Name, DESCRIPTION, PRICE, PRODUCT_TYPE) VALUES (1, 'Capuchino', 'The variety of discernable tastes, such as chocolate, berry, citrus, caramel, sweet, used in describing coffee. Some become more evident as the coffee cools.', '100.00', 'BREAKFAST');
+INSERT INTO PRODUCT(ID, product_Name, DESCRIPTION, PRICE, PRODUCT_TYPE) VALUES (1, 'Capuchino', 'capuchino description', '100.00', 'BREAKFAST');
 
