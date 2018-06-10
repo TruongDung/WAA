@@ -51,18 +51,17 @@ public class PersonController {
 	@GetMapping("/me")
 	public String myInformation(Model model, Authentication authentication) {
 		UserDetailsCustom u = (UserDetailsCustom) authentication.getPrincipal();
-		model.addAttribute("person", this.personService.findById(u.getId()));
-		
-		List<Order> orders = orderService.findByPerson(this.personService.findById(u.getId()));
-		model.addAttribute("orders", orders);
-		
+		model.addAttribute("person", this.personService.findById(u.getId()));		
 		return "myInformation";
 	}
 	
 	@PostMapping("/myInformation")
 	public String myInformationPost(@Valid @ModelAttribute("Person") Person person) {
-		System.out.println(person.toString());
+		Long preId = person.getId();
 		personService.savePerson(person);
-		return "redirect:/person/myInformation";
+		if(preId == 0) {
+			return "redirect:/person/list";
+		}
+		return "redirect:/person/me";
 	}
 }

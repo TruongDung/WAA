@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.service.ProductService;
 
@@ -28,7 +29,8 @@ public class HomeController {
 	}
 	
 	@GetMapping("/register") 
-	public String register() {
+	public String register(Model model) {
+		model.addAttribute("person", new Person());
 		return "register";
 	}
 	
