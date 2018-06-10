@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,5 +29,13 @@ public class ProductService   {
 	public void delete(long id) {
 		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
 		restTemplate.exchange("http://localhost:8080/api/product/" + id, HttpMethod.DELETE, restHttpHeader.getHttpEntity(), Product[].class).getBody();
+	}
+	
+	public void save(Product p) {
+		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
+		restTemplate.exchange("http://localhost:8080/api/product/create", HttpMethod.POST, restHttpHeader.getHttpEntity(), Product[].class).getBody();
+		HttpEntity<Product> httpEntity = new HttpEntity<Product>(p, restHttpHeader.getHttpHeaders());
+		restTemplate.postForObject("http://localhost:8080/api/product/create", httpEntity, Product.class);
+		
 	}
 }
