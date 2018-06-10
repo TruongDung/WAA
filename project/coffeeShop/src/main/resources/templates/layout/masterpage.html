@@ -20,25 +20,25 @@
 	               <div class="nav-link"> Hello <label th:text ="${#authentication.getPrincipal().getUser().getEmail()}"></label> </div>
 	             </li>
 	             <li class="nav-item" sec:authorize="isAuthenticated()">
-	             	<a class="nav-link" th:href="@{/person/me}">My Information</a>
+	             	<a class="nav-link" th:href="@{/person/me}"><i class="fas fa-info-circle"></i> My Information</a>
 	             </li>
 	             <li class="nav-item" sec:authorize="isAuthenticated()">
-	             	<a class="nav-link" th:href="@{/order/list}">Orders</a>
+	             	<a class="nav-link" th:href="@{/order/list}"><i class="fas fa-bars"></i> Orders</a>
 	             </li>
 	             <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-	             	<a class="nav-link" th:href="@{/product/list}">Products</a>
+	             	<a class="nav-link" th:href="@{/product/list}"><i class="fas fa-coffee"></i> Products</a>
 	             </li>
 	             <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-	             	<a class="nav-link" th:href="@{/person/list}">Person</a>
+	             	<a class="nav-link" th:href="@{/person/list}"><i class="fas fa-user"></i> Person</a>
 	             </li>
 	             <li class="nav-item">
 	             	<a class="nav-link" th:href="@{/order/shoppingCart}"><i class ="fa fa-shopping-cart"></i> View Cart</a>
 	             </li>
 	             <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a class="nav-link" th:href="@{/login}">Login</a>
+                    <a class="nav-link" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    <a class="nav-link" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>
 			</ul>
 		</div>
