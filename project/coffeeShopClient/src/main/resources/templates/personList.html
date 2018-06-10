@@ -16,19 +16,28 @@
 	       <th>First Name</th>
 	       <th class="text-center">Last Name</th>
 	       <th class="text-center">Phone</th>
-	       <th >Enabled</th>
+	       <th>Enabled</th>
+	       <th>Action</th>
 	   </tr>
 	   </thead>
 	   <tbody>
 		   <tr th:each="item: ${persons}">
 				<td th:text="${item.email}"></td>
-				<td th:text="${item.firstName}"></td>
+			 	<td th:text="${item.firstName}"></td>
 				<td th:text="${item.lastName}"></td>
 				<td th:text="${item.phone}"></td>
 				<td th:text="${item.enable}"></td>
+				<td>
+					<a th:href="${item.id}" class="btn btn-primary update-single-person"><i class="fa fa-sync"></i></a>
+				</td>
 			</tr>
 	   </tbody>
 	</table>
 </th:block>
 </body>
+
+<th:block layout:fragment="scripts">
+    <script th:src="@{/js/person.js}" src="../../js/person.js" type="text/javascript"></script>
+</th:block>
+
 </html>

@@ -28,8 +28,8 @@ public class Person implements Serializable {
 	@Column(name = "PHONE")
 	private String phone;
 
-	@Column(name = "ENABLED")
-	private boolean enabled;
+	@Column(name = "ENABLE")
+	private boolean enable;
 
 	@Transient
 	private String password;
@@ -38,12 +38,12 @@ public class Person implements Serializable {
 		return id;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public boolean isEnable() {
+		return enable;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
+	public void setEnable(boolean enabled) {
+		this.enable = enabled;
 	}
 
 	public String getFirstName() {

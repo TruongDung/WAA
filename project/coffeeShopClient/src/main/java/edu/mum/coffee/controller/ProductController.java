@@ -1,5 +1,7 @@
 package edu.mum.coffee.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -54,7 +56,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/")
-	public String addNew(@ModelAttribute("Product") Product product) {
+	public String addNew(@Valid @ModelAttribute("Product") Product product) {
 		productService.save(product);
 		return "redirect:/product/list";
 	}
