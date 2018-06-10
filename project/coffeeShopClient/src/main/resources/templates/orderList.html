@@ -17,7 +17,6 @@
               <div class="card-text">Price: $ <strong th:text="${orderLine.product.price}"></strong></div>
               <div class="card-text">Quantity: <strong th:text="${orderLine.quantity}"></strong></div>
           </div>
-          <hr th:if="${iter.index % 2 == 0 && !iter.last}"/>
       </div>
 </div>
 </th:block>

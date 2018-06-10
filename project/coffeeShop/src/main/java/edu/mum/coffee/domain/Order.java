@@ -1,5 +1,6 @@
 package edu.mum.coffee.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -16,9 +17,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "OrderTable")
-public class Order {
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+public class Order implements Serializable{
 
 	@Id
 	@GeneratedValue
@@ -26,6 +31,7 @@ public class Order {
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 
+	//@JsonIgnore	
 	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Orderline> orderLines = new ArrayList<Orderline>();
 	@OneToOne

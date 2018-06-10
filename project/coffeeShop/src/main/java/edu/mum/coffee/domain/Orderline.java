@@ -1,5 +1,7 @@
 package edu.mum.coffee.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,9 +9,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
 @Table(name = "Orderline")
-public class Orderline {
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+public class Orderline implements Serializable{
 
 	@Id
 	@GeneratedValue
@@ -17,6 +23,8 @@ public class Orderline {
 	private int quantity;
 	@OneToOne
 	private Product product;
+	
+	 //@JsonManagedReference
 	@ManyToOne
 	private Order order;
 
