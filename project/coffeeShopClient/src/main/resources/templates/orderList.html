@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/masterpage">
+<head>
+</head>
+<body>
+<th:block layout:fragment="page_content">
+<div th:each="item: ${orders}">
+	<div th:text="${item.id}"></div>
+	<div th:text="${item.getTotalAmount()}"></div>
+	<div th:text="${item.getOrderDate()}"></div>
+	
+	<div class="row" th:each="orderLine, iter : ${item.orderLines}">
+          <div class="card-block">
+              <h4 class="card-title" th:text="${orderLine.product.productName}"></h4>
+              <div class="card-text">Price: $ <strong th:text="${orderLine.product.price}"></strong></div>
+              <div class="card-text">Quantity: <strong th:text="${orderLine.quantity}"></strong></div>
+          </div>
+          <hr th:if="${iter.index % 2 == 0 && !iter.last}"/>
+      </div>
+</div>
+</th:block>
+</body>
+</html>

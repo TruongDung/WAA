@@ -1,28 +1,21 @@
 package edu.mum.coffee.domain;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
-@Table(name = "PRODUCT")
-public class Product implements Serializable {
+public class Product {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "ID")
 	private long id;
-
-	@Column(name = "NAME")
-	private String name;
-
-	@Column(name = "DESCRIPTION")
+	private String productName;
 	private String description;
-
-	@Column(name = "PRICE")
 	private double price;
-
 	@Enumerated(EnumType.STRING)
-	@Column(name = "PRODUCT_TYPE")
 	private ProductType productType;
 
 	public Product() {
@@ -31,7 +24,7 @@ public class Product implements Serializable {
 
 	public Product(String productName, String description, double price, ProductType productType) {
 		super();
-		this.name = productName;
+		this.productName = productName;
 		this.description = description;
 		this.price = price;
 		this.productType = productType;
@@ -45,12 +38,12 @@ public class Product implements Serializable {
 		this.productType = productType;
 	}
 
-	public String getName() {
-		return name;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setName(String productName) {
-		this.name = productName;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public String getDescription() {
@@ -73,7 +66,4 @@ public class Product implements Serializable {
 		return id;
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
 }

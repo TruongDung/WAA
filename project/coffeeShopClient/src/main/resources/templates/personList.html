@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/masterpage">
+<head>
+</head>
+<body>
+<th:block layout:fragment="page_content">
+
+	<a class="btn btn-primary" th:href="@{/person/add}">Add Person</a>
+
+	<table class="table table-hover">
+	   <thead class="thead-light ">
+	   <tr>
+	       <th scope="col">Email</th>
+	       <th>First Name</th>
+	       <th class="text-center">Last Name</th>
+	       <th class="text-center">Phone</th>
+	       <th >Enabled</th>
+	   </tr>
+	   </thead>
+	   <tbody>
+		   <tr th:each="item: ${persons}">
+				<td th:text="${item.email}"></td>
+				<td th:text="${item.firstName}"></td>
+				<td th:text="${item.lastName}"></td>
+				<td th:text="${item.phone}"></td>
+				<td th:text="${item.enable}"></td>
+			</tr>
+	   </tbody>
+	</table>
+</th:block>
+</body>
+</html>

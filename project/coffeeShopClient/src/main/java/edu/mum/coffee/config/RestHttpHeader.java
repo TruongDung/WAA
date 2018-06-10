@@ -14,9 +14,12 @@ import org.springframework.security.web.csrf.CsrfTokenRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+
+
 @Component
 public class RestHttpHeader {
 	protected RestTemplate restTemplate;
+	
 	
 	public RestHttpHeader() {
 		restTemplate = new RestTemplate();
@@ -28,9 +31,9 @@ public class RestHttpHeader {
 	}
 
 	public HttpHeaders getHttpHeaders() {
-		
-		String username = "admin@mum.edu";
-		String password = "1";
+
+		String username = "admin";
+		String password = "123456";
 		
         String auth = username + ":" + password;
         byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
@@ -46,5 +49,6 @@ public class RestHttpHeader {
 	public HttpEntity<?> getHttpEntity() {
 		return new HttpEntity(getHttpHeaders());
 	}
+
 }
 

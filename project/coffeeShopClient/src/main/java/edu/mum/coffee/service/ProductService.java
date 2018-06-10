@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 import edu.mum.coffee.config.RestHttpHeader;
 import edu.mum.coffee.domain.Product;
-import edu.mum.coffee.domain.ProductType;
+
 
 @Service
 @Transactional
@@ -23,5 +23,6 @@ public class ProductService   {
 	public List<Product> getAllProduct() {
 		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
 		return Arrays.asList(restTemplate.exchange("http://localhost:8080/api/product/list", HttpMethod.GET, restHttpHeader.getHttpEntity(), Product[].class).getBody());
+		//return Arrays.asList(restTemplate.exchange("http://localhost:8080/api/entries/", HttpMethod.GET, restHttpHeader.getHttpEntity(), Entry[].class).getBody());
 	}
 }

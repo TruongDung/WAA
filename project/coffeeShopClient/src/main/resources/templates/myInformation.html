@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/masterpage">
+<head>
+</head>
+<body>
+	<th:block layout:fragment="page_content">
+		<div class="">
+			<form th:action="@{/person/myInformation}"  th:object="${person}" method="POST">
+				<input th:field="*{id}" type="hidden" >
+				<div class="form-group row">
+					<label for="email">Email:</label>
+			      	<input th:field="*{email}" type="text" class="form-control">
+				</div>
+				<div class="form-group row">
+					<label for="email">First Name:</label>
+			      	<input th:field="*{firstName}" type="text" class="form-control">
+				</div>
+				<div class="form-group row">
+					<label for="email">Last Name:</label>
+			      	<input th:field="*{lastName}" type="text" class="form-control">
+				</div>
+				<div class="form-group row">
+					<label for="email">Phone Name:</label>
+			      	<input th:field="*{phone}" type="text" class="form-control">
+				</div>
+				<div class="form-group row">
+					<label for="email">Enable:</label>
+			      	<input th:field="*{enable}" type="checkbox" class="form-control">
+				</div>
+				<div class="form-group row">
+					<button type="submit" class="btn btn-primary">Save</button>
+				</div>
+			</form>
+		</div>
+
+    </th:block>
+</body>
+</html>
