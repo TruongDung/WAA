@@ -7,7 +7,7 @@
 <body>
 	<th:block layout:fragment="page_content">
 		<div class="">
-			<form th:action="@{/myInformation}"  th:object="${person}" method="POST">
+			<form th:action="@{/person/myInformation}"  th:object="${person}" method="POST">
 				<input th:field="*{id}" type="hidden" >
 				<div class="form-group row">
 					<label for="email">Email:</label>
@@ -34,41 +34,7 @@
 				</div>
 			</form>
 		</div>
-		
-		<div class="card" th:each="order : ${orders}">
-        <div class="card-header">
-            <div class="row">
-                <div class="col-sm-3 col-3">
-                    ORDER PLACED
-                </div>
-                <div class="col-sm-3 col-3">
-                    TOTAL
-                </div>
-                <div class="col-sm-3 col-3">
-                    ORDER STATUS
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3 col-3" th:text="${order.orderDate}">
-                </div>
-                <div class="col-sm-3 col-3" th:text="${order.totalAmount}">
-                </div>
-                <div class="col-sm-3 col-3">
-                    SHIPPED
-                </div>
-            </div>
-        </div>
-        <div class="row" th:each="orderLine, iter : ${order.orderLines}">
-            <div class="card-block">
-                <h4 class="card-title" th:text="${orderLine.product.name}"></h4>
-                <div class="card-text" th:text="${orderLine.product.description}"></div>
-                <div class="card-text">Price: $ <strong th:text="${orderLine.product.price}"></strong></div>
-                <div class="card-text">Quantity: <strong th:text="${orderLine.quantity}"></strong></div>
-            </div>
-            <hr th:if="${iter.index % 2 == 0 && !iter.last}"/>
-        </div>
-    </div>
-		
+
     </th:block>
 </body>
 </html>

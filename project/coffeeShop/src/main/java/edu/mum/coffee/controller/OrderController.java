@@ -44,8 +44,9 @@ public class OrderController {
 	public String orderList(Model model, HttpSession session, Authentication authentication) {
 		UserDetailsCustom currentUser = (UserDetailsCustom) authentication.getPrincipal();
 		if(currentUser.getAuthorities().stream().anyMatch(ga->ga.getAuthority().equals("ROLE_ADMIN"))) {
-			List<Order> os = orderService.findAll();
 			model.addAttribute("orders", orderService.findAll());
+		} else {
+			model.addAttribute("orders", orderService.findByPerson(personService.findById(currentUser.getId())));
 		}
 		return "orderList";
 	}

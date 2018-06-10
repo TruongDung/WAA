@@ -41,6 +41,13 @@ public class PersonController {
 		return "redirect:/persons";
 	}
 	
+	@GetMapping("/add")
+	public String add(Model model) {
+		Person p = new Person();
+		model.addAttribute("person",p );
+		return "myInformation";
+	}
+	
 	@GetMapping("/me")
 	public String myInformation(Model model, Authentication authentication) {
 		UserDetailsCustom u = (UserDetailsCustom) authentication.getPrincipal();
@@ -56,6 +63,6 @@ public class PersonController {
 	public String myInformationPost(@Valid @ModelAttribute("Person") Person person) {
 		System.out.println(person.toString());
 		personService.savePerson(person);
-		return "redirect:/myInformation";
+		return "redirect:/person/myInformation";
 	}
 }
