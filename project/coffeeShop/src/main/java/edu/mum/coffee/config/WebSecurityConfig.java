@@ -32,8 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 	
-		//.antMatchers("/api/schedules/view/*")
-		http.authorizeRequests().antMatchers("/api/**", "/products/**","/product/**", "/persons/**", "/orders/**").hasRole("ADMIN").and().httpBasic()
+		http.authorizeRequests().antMatchers("/api/**","/product/**", "/person/**", "/order/**").hasRole("ADMIN").and().httpBasic()
 		.realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
 
 		http.authorizeRequests().antMatchers("/order/placeOrder", "/person/me").authenticated();
@@ -92,7 +91,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.authenticationProvider(authenticationProvider());
 	}
 	
-	
-	
-	// https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
+	// reference security on page: https://medium.com/@gustavo.ponce.ch/spring-boot-spring-mvc-spring-security-mysql-a5d8545d837d
 }

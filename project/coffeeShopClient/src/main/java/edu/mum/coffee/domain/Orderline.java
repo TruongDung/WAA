@@ -1,29 +1,31 @@
 package edu.mum.coffee.domain;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
-@Table(name = "ORDER_LINE")
-public class Orderline implements Serializable {
+@Table(name = "Orderline")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+public class Orderline implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name = "ID")
-	private long id;
-
-	@Column(name = "QUANTITY")
+	private int id;
 	private int quantity;
-
 	@OneToOne
-	@JoinColumn(name = "PRODUCT_ID")
 	private Product product;
-
-	@Transient
-	private double subTotal;
-
+	
+	 //@JsonManagedReference
 	@ManyToOne
-	@JoinColumn(name = "ORDER_ID")
 	private Order order;
 
 	public int getQuantity() {
@@ -58,19 +60,4 @@ public class Orderline implements Serializable {
 		return product.getPrice();
 	}
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public double getSubTotal() {
-		return product.getPrice() * quantity;
-	}
-
-	public void setSubTotal(double subTotal) {
-		this.subTotal = subTotal;
-	}
 }

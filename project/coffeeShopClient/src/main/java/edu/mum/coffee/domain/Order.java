@@ -6,29 +6,38 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "ORDER_TABLE")
-public class Order implements Serializable {
+@Table(name = "OrderTable")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
+public class Order implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name = "ID")
-	private long id;
-
-	@Column(name = "ORDER_DATE")
+	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
 
+	//@JsonIgnore	
 	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Orderline> orderLines = new ArrayList<Orderline>();
-
 	@OneToOne
-	@JoinColumn(name = "PERSON_ID")
 	private Person person;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
@@ -86,11 +95,4 @@ public class Order implements Serializable {
 		orderLines.clear();
 	}
 
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public void setOrderLines(List<Orderline> orderLines) {
-		this.orderLines = orderLines;
-	}
 }
