@@ -16,7 +16,7 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div th:if="${param.error}" class="text-danger align-middle">
-                    <i class="fa fa-close"></i> Invalid username and password. 
+                    <i class="fa fa-close"></i> Invalid username or password. 
                 </div>
             </div>
         </div>
@@ -24,11 +24,11 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="form-group has-danger">
-                    <label class="sr-only" for="username">Email Address</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <label class="sr-only">Email Address</label>
+                    <div>
                         <div class="input-group-addon" style="width: 2.6rem"></div>
                         <input type="text" name="username" class="form-control" id="username"
-                               placeholder="you@example.com" required autofocus>
+                               placeholder="your email" required autofocus>
                     </div>
                 </div>
             </div>
@@ -37,8 +37,8 @@
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <label class="sr-only" for="password">Password</label>
-                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <label class="sr-only">Password</label>
+                    <div>
                         <div class="input-group-addon" style="width: 2.6rem"></div>
                         <input type="password" name="password" class="form-control" id="password"
                                placeholder="Password" required>

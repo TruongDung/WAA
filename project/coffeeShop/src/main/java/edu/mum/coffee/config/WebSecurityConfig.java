@@ -20,15 +20,13 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
 	private static String REALM="COFFESHOP";
-	
 	@Autowired
 	private UserService userDetailsService;
 	
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/signup", "/login", "/webjars/**", "/css/**", "/images/**").permitAll();
+		http.authorizeRequests().antMatchers("/webjars/**", "/css/**", "/images/**").permitAll();
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 	
