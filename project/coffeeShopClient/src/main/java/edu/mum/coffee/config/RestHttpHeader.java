@@ -32,7 +32,7 @@ public class RestHttpHeader {
 
 	public HttpHeaders getHttpHeaders() {
 
-		String username = "admin";
+		String username = "admin@gmail.com";
 		String password = "123456";
 		
         String auth = username + ":" + password;
