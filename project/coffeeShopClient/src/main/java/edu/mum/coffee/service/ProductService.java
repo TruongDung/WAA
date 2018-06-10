@@ -35,6 +35,11 @@ public class ProductService   {
 		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
 		HttpEntity<Product> httpEntity = new HttpEntity<Product>(p, restHttpHeader.getHttpHeaders());
 		restTemplate.postForObject("http://localhost:8080/api/product/create", httpEntity, Product.class);
-		
+	}
+	
+	public Product findOne(long id) {
+		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
+		Product p = restTemplate.exchange("http://localhost:8080/api/product/"+ id, HttpMethod.GET, restHttpHeader.getHttpEntity(), Product.class).getBody();
+		return p;
 	}
 }

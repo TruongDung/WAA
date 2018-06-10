@@ -23,7 +23,11 @@
 				<td th:text="${item.description}"></td>
 				<td th:text="${item.price}"></td>
 				<td th:text="${item.productType}"></td>
-				<td> <button th:attr="productId=${item.id}" class="btn btn-danger delete-single-product"><i class="fa fa-trash"></i></button> </td>
+				<td> 
+					<button th:attr="productId=${item.id}" class="btn btn-danger delete-single-product"><i class="fa fa-trash"></i></button> 
+					<!-- <button th:attr="productId=${item.id}" class="btn btn-primary update-single-product"><i class="fa fa-sync"></i></button> -->
+					<a th:href="${item.id}" class="btn btn-primary update-single-product"><i class="fa fa-sync"></i></a>
+				</td>
 			</tr>
 	   </tbody>
 	</table>

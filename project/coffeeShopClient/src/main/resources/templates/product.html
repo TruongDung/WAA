@@ -8,7 +8,7 @@
 <th:block layout:fragment="page_content">
 
 <form th:object="${product}" th:action="@{/product/}" method="post" class="form-custom">
-        <input type="hidden" name="id" th:field="*{id}" />
+       <input th:field="*{id}" type="hidden" >
         <div class="form-group row">
             <label for="name" class="col-sm-3 col-form-label">Name</label>
             <div class="col-sm-9">

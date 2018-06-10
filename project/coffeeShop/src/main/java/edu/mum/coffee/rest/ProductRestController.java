@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,5 +36,11 @@ public class ProductRestController {
 	@PostMapping(value="/create")
 	public void Save(@RequestBody Product product) {
 		_productService.save(product);
+	}
+	
+	@GetMapping({"/{id}"})
+	public Product findOne(@PathVariable("id") long id) {
+		Product p = _productService.getProduct(id);
+		return p;
 	}
 }
