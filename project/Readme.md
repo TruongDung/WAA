@@ -8,6 +8,7 @@
 		Create and List persons
 		List Orders
 	- Register and do shopping on the system	
+	- Login for testing: admin@gmail.com, cust1@gmail.com
 2. The Coffee Shop client: this project used to consume the API on CoffeeShop app, used RestTemplate. The main function in this project
 	- Create, List, Delete, Update products
 	- Create, List, Update persons
