@@ -1,5 +1,7 @@
 package edu.mum.coffee.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.mum.coffee.custom.UserDetailsCustom;
+import edu.mum.coffee.domain.Order;
 import edu.mum.coffee.domain.Person;
+import edu.mum.coffee.service.OrderService;
 import edu.mum.coffee.service.PersonService;
 
 @Controller
@@ -21,6 +25,9 @@ public class PersonController {
 	
 	@Autowired
 	PersonService personService;
+	
+	@Autowired
+	OrderService orderService;
 	
 	@GetMapping("/list")
 	public String personList(Model model, Authentication authentication) {
@@ -37,8 +44,11 @@ public class PersonController {
 	@GetMapping("/me")
 	public String myInformation(Model model, Authentication authentication) {
 		UserDetailsCustom u = (UserDetailsCustom) authentication.getPrincipal();
-		System.out.println(u.getId());
 		model.addAttribute("person", this.personService.findById(u.getId()));
+		
+		List<Order> orders = orderService.findByPerson(this.personService.findById(u.getId()));
+		model.addAttribute("orders", orders);
+		
 		return "myInformation";
 	}
 	
