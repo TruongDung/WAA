@@ -33,7 +33,6 @@ public class ProductService   {
 	
 	public void save(Product p) {
 		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
-		restTemplate.exchange("http://localhost:8080/api/product/create", HttpMethod.POST, restHttpHeader.getHttpEntity(), Product[].class).getBody();
 		HttpEntity<Product> httpEntity = new HttpEntity<Product>(p, restHttpHeader.getHttpHeaders());
 		restTemplate.postForObject("http://localhost:8080/api/product/create", httpEntity, Product.class);
 		
