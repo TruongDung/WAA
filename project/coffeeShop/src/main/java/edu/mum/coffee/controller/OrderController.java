@@ -28,6 +28,7 @@ import edu.mum.coffee.service.PersonService;
 import edu.mum.coffee.service.ProductService;
 
 @Controller
+@RequestMapping(path="/order")
 public class OrderController {
 	
 	@Autowired
@@ -38,6 +39,16 @@ public class OrderController {
 	
 	@Autowired
 	OrderService orderService;
+	
+	@RequestMapping("/list")
+	public String orderList(Model model, HttpSession session, Authentication authentication) {
+		UserDetailsCustom currentUser = (UserDetailsCustom) authentication.getPrincipal();
+		if(currentUser.getAuthorities().stream().anyMatch(ga->ga.getAuthority().equals("ROLE_ADMIN"))) {
+			List<Order> os = orderService.findAll();
+			model.addAttribute("orders", orderService.findAll());
+		}
+		return "orderList";
+	}
 	
 	/// add product with id to cart
 	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
@@ -78,8 +89,10 @@ public class OrderController {
 		return "shoppingCart";
 	}
 	
+
+	
 	@PostMapping("/placeOrder")
-	public String placeOrder( HttpSession session, Authentication authentication) {
+	public String placeOrder(HttpSession session, Authentication authentication) {
 	   Order currentOrder = (Order)	session.getAttribute("order");
 	   if(currentOrder != null) {
 		   currentOrder.setOrderDate(new Date());

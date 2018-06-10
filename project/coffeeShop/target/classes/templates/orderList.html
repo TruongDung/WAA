@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/masterpage">
+<head>
+</head>
+<body>
+<th:block layout:fragment="page_content">
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Email</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Phone</th>
+				<th>Enabled</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="item: ${orders}">
+				<td th:text="${item.id}"></td>
+				<td th:text="${item.getTotalAmount()}"></td>
+				<td th:text="${item.lastName}"></td>
+				<!-- <td th:text="${item.phone}"></td>
+				<td th:text="${item.enable}"></td> -->
+			</tr>
+		</tbody>
+	</table>
+</th:block>
+</body>
+</html>

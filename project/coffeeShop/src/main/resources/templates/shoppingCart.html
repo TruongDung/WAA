@@ -46,7 +46,7 @@
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total Price <p th:text="${total}"></p></strong></td>
             <td>
-                <form th:action="@{/placeOrder}" method="POST">
+                <form th:action="@{/order/placeOrder}" method="POST">
                     <button th:if="${order != null && not #lists.isEmpty(order.orderLines)}" class="btn btn-success">Checkout</button>
                 </form>
             </td>

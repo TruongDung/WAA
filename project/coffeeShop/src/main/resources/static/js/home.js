@@ -3,7 +3,7 @@ $(function() {
         e.preventDefault();
         var self = $(this);
         $.ajax({
-            url: "/addToCart",
+            url: "/order/addToCart",
             type: "POST",
             data: self.attr("productid"),
             contentType: "application/json; charset=utf-8",
