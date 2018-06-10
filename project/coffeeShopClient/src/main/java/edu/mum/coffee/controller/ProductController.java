@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import edu.mum.coffee.domain.Product;
+import edu.mum.coffee.domain.ProductType;
 import edu.mum.coffee.service.OrderService;
 import edu.mum.coffee.service.ProductService;
 
@@ -41,6 +42,7 @@ public class ProductController {
 	@RequestMapping("/add")
 	public String add(Model model) {
 		model.addAttribute("product", new Product());
+		model.addAttribute("productTypes", ProductType.values());
 		return "product";
 	}
 	
