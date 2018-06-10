@@ -25,17 +25,5 @@ public class HomeController {
 		System.out.println(productService.getAllProduct());
 		model.addAttribute("products", productService.getAllProduct());
 		return "index";
-	}
-	
-	@GetMapping({"/login"})
-	public String login() {
-		return "login";
-	}
-	
-	@PostMapping("/signup")
-	public String signup(@ModelAttribute Person person) {
-		personService.signup(person);
-		return "redirect:/login";
-	}
-	
+	}	
 }

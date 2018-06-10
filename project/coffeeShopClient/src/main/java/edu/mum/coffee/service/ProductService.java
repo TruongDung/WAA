@@ -23,6 +23,10 @@ public class ProductService   {
 	public List<Product> getAllProduct() {
 		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
 		return Arrays.asList(restTemplate.exchange("http://localhost:8080/api/product/list", HttpMethod.GET, restHttpHeader.getHttpEntity(), Product[].class).getBody());
-		//return Arrays.asList(restTemplate.exchange("http://localhost:8080/api/entries/", HttpMethod.GET, restHttpHeader.getHttpEntity(), Entry[].class).getBody());
+	}
+	
+	public void delete(long id) {
+		RestTemplate restTemplate = restHttpHeader.getRestTemplate();
+		restTemplate.exchange("http://localhost:8080/api/product/" + id, HttpMethod.DELETE, restHttpHeader.getHttpEntity(), Product[].class).getBody();
 	}
 }

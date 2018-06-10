@@ -24,8 +24,4 @@ public class PersonService {
 		return null;
 	}
 	
-	public void signup(Person person) {
-		
-	}
-
 }
