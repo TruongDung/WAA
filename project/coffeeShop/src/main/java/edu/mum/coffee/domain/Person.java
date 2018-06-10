@@ -1,5 +1,7 @@
 package edu.mum.coffee.domain;
 
+import javax.persistence.*;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +23,23 @@ public class Person {
 	private Address address;
 	private String phone;
 	private boolean enable;
+	
+	@Transient
+	private String password;
+
+	/**
+	 * @return the password
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * @param password the password to set
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public long getId() {
 		return id;
