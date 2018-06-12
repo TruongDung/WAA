@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>List Account</title>
+</h:head>
+<h:body>
+	<h1>List Account</h1>
+	<h:form>
+		<h:dataTable value="#{listAccountController.allAccounts}" var="account">
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:link value="#{account.customer.name}" outcome="detail">
+           			 <f:param name="accountnumber" value="#{account.accountnumber}" />
+        			</h:link>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Account Number</f:facet>
+				<h:outputText value="#{account.accountnumber}" /> 
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">Balance</f:facet>
+				<h:outputText value="#{account.balance}" /> 
+			</h:column>
+			
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>

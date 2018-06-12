@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:index.xhtml" PATH="index.xhtml"
+  SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:index.xhtml:0" NAME="item" PATH="index.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="create::faces#create.xhtml" NAME="output"
+    PATH="faces/create.xhtml" TARGET="rules:faces#create.xhtml"
+    TITLE="create" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="list::faces#list.xhtml" NAME="output1"
+    PATH="faces/list.xhtml" TARGET="rules:faces#list.xhtml" TITLE="list" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="detail::faces#detail.xhtml" NAME="output2"
+    PATH="faces/detail.xhtml" TARGET="rules:faces#detail.xhtml"
+    TITLE="detail" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:faces#create.xhtml" PATH="faces/create.xhtml"
+  SHAPE="272,120,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:faces#list.xhtml" PATH="faces/list.xhtml"
+  SHAPE="272,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:faces#detail.xhtml" PATH="faces/detail.xhtml"
+  SHAPE="272,80,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#faces#create.xhtml"
+  PATH="/faces/create.xhtml" SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#faces#create.xhtml:0" NAME="item"
+   PATH="/faces/create.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="success::#faces#list.xhtml" NAME="output"
+    PATH="/faces/list.xhtml" TARGET="rules:#faces#list.xhtml"
+    TITLE="success" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cancel::#index.xhtml" NAME="output1"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="cancel" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#faces#list.xhtml" PATH="/faces/list.xhtml"
+  SHAPE="256,321,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#faces#list.xhtml:0" NAME="item"
+   PATH="/faces/list.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="detail::#faces#detail.xhtml" NAME="output"
+    PATH="/faces/detail.xhtml" TARGET="rules:#faces#detail.xhtml"
+    TITLE="detail" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
+  SHAPE="256,465,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#faces#detail.xhtml"
+  PATH="/faces/detail.xhtml" SHAPE="464,305,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+              http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+	<flow-definition id="create-account">
+
+		<start-node>createAccount</start-node>
+
+		<view id="createAccount">
+			<vdl-document>/faces/create.xhtml</vdl-document>
+		</view>
+
+		<flow-return id="exitAccount">
+			<from-outcome>/index.xhtml</from-outcome>
+		</flow-return>
+
+		<navigation-rule>
+			<from-view-id>/faces/create.xhtml</from-view-id>
+			<navigation-case>
+				<from-outcome>next</from-outcome>
+				<to-view-id>/faces/deposit.xhtml</to-view-id>
+			</navigation-case>
+		</navigation-rule>
+		<navigation-rule>
+			<from-view-id>/faces/create.xhtml</from-view-id>
+			<navigation-case>
+				<from-outcome>cancel</from-outcome>
+				<to-view-id>exitAccount</to-view-id>
+			</navigation-case>
+		</navigation-rule>
+
+		<navigation-rule>
+			<from-view-id>/faces/deposit.xhtml</from-view-id>
+			<navigation-case>
+				<from-outcome>success</from-outcome>
+				<to-view-id>exitAccount</to-view-id>
+			</navigation-case>
+		</navigation-rule>
+		
+		<navigation-rule>
+			<from-view-id>/faces/deposit.xhtml</from-view-id>
+			<navigation-case>
+				<from-outcome>previous</from-outcome>
+				<to-view-id>/faces/create.xhtml</to-view-id>
+			</navigation-case>
+		</navigation-rule>
+		
+		<navigation-rule>
+			<from-view-id>/faces/deposit.xhtml</from-view-id>
+			<navigation-case>
+				<from-outcome>cancel</from-outcome>
+				<to-view-id>exitAccount</to-view-id>
+			</navigation-case>
+		</navigation-rule>
+
+	</flow-definition>
+</faces-config>
