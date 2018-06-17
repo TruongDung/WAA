@@ -26,6 +26,7 @@ public class ListAccountController implements Serializable{
 	
 	public List<Account> getAllAccounts() {
 //		detailAccountController.setAccountNumber(10);
+		System.out.println("test123");
 		return new ArrayList<>(cacheManagerBean.getAllAccounts());
 	}
 

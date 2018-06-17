@@ -102,5 +102,9 @@ public class Person {
 		// TODO Auto-generated method stub
 		return this.firstName.toString();
 	}
+	
+	public String getFullName() {
+		return this.firstName + " " + this.lastName;
+	}
 
 }

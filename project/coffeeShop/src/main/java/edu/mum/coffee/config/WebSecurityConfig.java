@@ -30,10 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.headers().frameOptions().disable();
 	
-		http.authorizeRequests().antMatchers("/api/**","/product/**", "/person/**", "/order/**").hasRole("ADMIN").and().httpBasic()
+		http.authorizeRequests().antMatchers("/api/**","/product/**", "/person/**").hasRole("ADMIN").and().httpBasic()
 		.realmName(REALM).authenticationEntryPoint(getBasicAuthEntryPoint());
 
-		http.authorizeRequests().antMatchers("/order/placeOrder", "/person/me").authenticated();
+		http.authorizeRequests().antMatchers("/order/placeOrder", "/person/me", "/order/**").authenticated();
 
 		http.formLogin()
 				.loginPage("/login")

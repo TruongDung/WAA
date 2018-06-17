@@ -3,9 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/masterpage">
 <head>
-    <th:block layout:fragment="css_placeholder">
-        <link rel="stylesheet" th:href="@{/css/shopping-cart.css}" href="../../css/shopping-cart.css"/>
-    </th:block>
+	<title>Shopping Cart</title>
 </head>
 <body>
 
@@ -35,14 +33,14 @@
             </td>
             <td data-th="Subtotal" class="text-center" th:text="${orderLine.subtotal}"></td>
             <td class="actions" data-th="">
-                <button th:attr="productId=${orderLine.product.id}" class="btn btn-info btn-sm btn-refresh-shopping-cart"><i class="fa fa-save"></i></button>
-                <button th:attr="productId=${orderLine.product.id}" class="btn btn-danger btn-sm btn-remove-shopping-cart"><i class="fa fa-trash"></i></button>
+                <button th:attr="productId=${orderLine.product.id}" class="btn btn-info btn-sm btn-update-item-cart"><i class="fa fa-save"></i></button>
+                <button th:attr="productId=${orderLine.product.id}" class="btn btn-danger btn-sm btn-remove-item-cart"><i class="fa fa-trash"></i></button>
             </td>
         </tr>
         </tbody>
         <tfoot>
         <tr>
-            <td><a th:href="@{/}" class="btn"><i class="fa fas fa-home"></i> Continue Shopping</a></td>
+            <td><a th:href="@{/}" class="btn"><i class="fas fa-arrow-left"></i> Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
             <td class="hidden-xs text-center"><strong>Total Price <p th:text="${total}"></p></strong></td>
             <td>
@@ -55,4 +53,7 @@
     </table>
 </th:block>
 </body>
+<th:block layout:fragment="scripts">
+    <script th:src="@{/js/cart.js}" src="../../js/cart.js" type="text/javascript"></script>
+</th:block>
 </html>

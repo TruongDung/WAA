@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="layout/masterpage">
 <head>
+<title>Product</title>
 </head>
 <body>
 <th:block layout:fragment="page_content">
@@ -13,7 +14,7 @@
 	       <th>Description</th>
 	       <th>Price</th>
 	       <th>Type</th>
-	       <th></th>
+	       <th>Action</th>
 	   </tr>
 	   </thead>
 	   <tbody>
@@ -22,6 +23,10 @@
 				<td th:text="${item.description}"></td>
 				<td th:text="${item.price}"></td>
 				<td th:text="${item.productType}"></td>
+				<td>
+					<button th:attr="productId=${item.id}" class="btn btn-info btn-sm btn-refresh-shopping-cart"><i class="fa fa-save"></i></button>
+	                <button th:attr="productId=${item.id}" class="btn btn-danger btn-sm btn-remove-product-cart"><i class="fa fa-trash"></i></button>
+				</td>
 			</tr>
 	   </tbody>
 	</table>

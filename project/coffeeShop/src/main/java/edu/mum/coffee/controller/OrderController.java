@@ -51,47 +51,6 @@ public class OrderController {
 		return "orderList";
 	}
 	
-	/// add product with id to cart
-	@RequestMapping(value = "/addToCart", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.OK)
-	public void addProductToCart(@RequestBody Long productId, HttpSession session) {
-		Object currentOrder = session.getAttribute("order");
-		if (currentOrder == null) {
-			currentOrder = new Order();
-			session.setAttribute("order", currentOrder);
-		}
-		Order order = (Order) currentOrder;
-
-		Optional<Orderline> orderDetail = order.getOrderLines().stream().filter(item -> item.getProduct().getId() == productId).findFirst();
-		if (orderDetail.isPresent()) {
-			Orderline orderline = orderDetail.get();
-			orderline.setQuantity(orderline.getQuantity() + 1);
-		} else {
-			Product product = productService.findById(productId);
-			Orderline orderDetail1  = new Orderline();
-			orderDetail1.setProduct(product);
-			orderDetail1.setQuantity(1);
-			order.addOrderLine(orderDetail1);
-		}
-	}
-	
-	@GetMapping("/shoppingCart")
-	public String shoppingCart(Model model, HttpSession session) {
-		Object currentOrder = session.getAttribute("order");
-		double total = 0;
-		if (currentOrder != null) {
-			 Order order = (Order) currentOrder;
-			model.addAttribute("order", order);
-			for (Orderline orderline : order.getOrderLines()) {
-				total += orderline.getSubtotal();
-			}
-		}
-		model.addAttribute("total", total);
-		return "shoppingCart";
-	}
-	
-
-	
 	@PostMapping("/placeOrder")
 	public String placeOrder(HttpSession session, Authentication authentication) {
 	   Order currentOrder = (Order)	session.getAttribute("order");

@@ -7,17 +7,19 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.0.0-1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css">
 </head>
 <body>
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 	<div class="container">
-		<a class="navbar-brand" th:href="@{/}">Home</a>
+		<a class="navbar-brand" th:href="@{/}"><i class="fa fas fa-home"></i> Home</a>
 
 		<div class="collapse navbar-collapse">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item" sec:authorize="isAuthenticated()">
-	               <div class="nav-link"> Hello <label th:text ="${#authentication.getPrincipal().getUser().getEmail()}"></label> </div>
+	               <div class="nav-link"> Hello <label class="font-weight-bold" th:text ="${#authentication.getPrincipal().getUser().getEmail()}"></label> </div>
 	             </li>
 	             <li class="nav-item" sec:authorize="isAuthenticated()">
 	             	<a class="nav-link" th:href="@{/person/me}"><i class="fas fa-info-circle"></i> My Information</a>
@@ -32,7 +34,7 @@
 	             	<a class="nav-link" th:href="@{/person/list}"><i class="fas fa-user"></i> Person</a>
 	             </li>
 	             <li class="nav-item">
-	             	<a class="nav-link" th:href="@{/order/shoppingCart}"><i class ="fa fa-shopping-cart"></i> View Cart</a>
+	             	<a class="nav-link" th:href="@{/shoppingCart}"><i class ="fa fa-shopping-cart"></i> View Cart</a>
 	             </li>
 	             <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="nav-link" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i> Login</a>
@@ -46,16 +48,27 @@
 </nav>
 
 <!-- Page Content -->
-<div class="container">
+<div class="container" style="padding-top:20px">
     <th:block layout:fragment="page_content">
     </th:block>
-    <!-- /.row -->
 </div>
-<!-- /.container -->
+
+<div class="myAlert-top alert alert-success">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Success!</strong>
+</div>
+<div class="myAlert-bottom alert alert-danger">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+</div>
 
 <script type="text/javascript" src="/webjars/jquery/3.3.1/jquery.js"></script>
 <script type="text/javascript" src="/webjars/bootstrap/4.0.0-1/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../js/main.js"></script>
 <th:block layout:fragment="scripts">
 </th:block>
 </body>
 </html>
+
+
+<!--  https://ultraq.github.io/thymeleaf-layout-dialect/Examples.html#layouts -->
