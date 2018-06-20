@@ -7,17 +7,26 @@
 <body>
 <th:block layout:fragment="page_content">
 <div th:each="item: ${orders}">
-	<div th:text="${item.id}"></div>
-	<div th:text="${item.getTotalAmount()}"></div>
-	<div th:text="${item.getOrderDate()}"></div>
+	<h5>Order Number: <span th:text="${item.id}"></span></h5>
+	<label>Total Price <span th:text="${item.getTotalAmount()}  + ' $'"></span></label><br/>
+	<label>Buyer <span th:text="${item.Person.getFullName()}"></span></label>
 	
-	<div class="row" th:each="orderLine, iter : ${item.orderLines}">
-          <div class="card-block">
-              <h4 class="card-title" th:text="${orderLine.product.productName}"></h4>
-              <div class="card-text">Price: $ <strong th:text="${orderLine.product.price}"></strong></div>
-              <div class="card-text">Quantity: <strong th:text="${orderLine.quantity}"></strong></div>
-          </div>
-      </div>
+	<table class="table table-hover">
+	   <thead class="thead-light ">
+	   <tr>
+	       <th scope="col">Name</th>
+	       <th scope="col">Price</th>
+	       <th scope="col">Quanlity</th>
+	   </tr>
+	   </thead>
+	   <tbody>
+		   <tr th:each="orderLine : ${item.orderLines}">
+				<td th:text="${orderLine.product.productName}"></td>
+				<td th:text="${orderLine.product.price}"></td>
+				<td th:text="${orderLine.quantity}"></td>
+			</tr>
+	   </tbody>
+	</table>
 </div>
 </th:block>
 </body>
